@@ -1,0 +1,38 @@
+:root {
+  --primary-color: #FF0000;
+  --primary-text: #000000;
+  --secondary-text: #FFFFFF;
+  --secondary-color: #000000;
+  --primary-translucent: rgba(15, 207, 162, 0.75);
+  --secondary-translucent: rgb(255, 122, 0.85);
+  --menu-speed: 0.75s;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
+
+/** Universal reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/** Class selectors */
+.center {
+  text-align: center;
+}
+
+.header {
+  display: inline-block;
+  font-family: 'Passion One', cursive;
+  width: 100vw;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.welcome {
+color: var(--secondary-text);
+padding: .5rem;
+}
