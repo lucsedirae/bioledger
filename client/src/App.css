@@ -1,11 +1,9 @@
 :root {
-  --primary-color: #FF0000;
+  --primary-color: #ff0000;
+  --secondary-color: #ffffff;
+  --tertiary-color: #000000;
   --primary-text: #000000;
-  --secondary-text: #FFFFFF;
-  --secondary-color: #000000;
-  --primary-translucent: rgba(15, 207, 162, 0.75);
-  --secondary-translucent: rgb(255, 122, 0.85);
-  --menu-speed: 0.75s;
+  --secondary-text: #ffffff;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
@@ -18,8 +16,24 @@
 }
 
 /** Class selectors */
+.app-panel {
+  margin: auto;
+  width: 90vw;
+  height: 80vh;
+  background-color: var(--secondary-color);
+  box-shadow: 4px 4px 8px var(--tertiary-color);
+  border-radius: 3px;
+}
+
 .center {
   text-align: center;
+}
+
+.footer {
+  width: 100vw;
+  padding-top: 2rem;
+  text-align: center;
+  color: var(--secondary-text);
 }
 
 .header {
@@ -33,6 +47,6 @@
 }
 
 .welcome {
-color: var(--secondary-text);
-padding: .5rem;
+  color: var(--secondary-text);
+  padding: 0.5rem;
 }

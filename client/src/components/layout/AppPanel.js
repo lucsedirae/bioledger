@@ -1,8 +1,3 @@
-export default function AppPanel({children}) {
-  return (
-    <div>
-      {children}
-    </div>
-  )
+export default function AppPanel({ children }) {
+  return <div className='app-panel'>{children}</div>;
 }
-

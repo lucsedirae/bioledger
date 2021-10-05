@@ -1,11 +1,12 @@
+//* Custom components
+import Layout from "../layout/Layout"
+
 export default function Register() {
   return (
-    <div>
-      //* Layout component
-      
-
-      //* Layout component close
-
-    </div>
+    <>
+     <Layout>
+       
+     </Layout>
+    </>
   )
 }

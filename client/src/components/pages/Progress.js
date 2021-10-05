@@ -1,11 +1,15 @@
+//* Custom components
+import Layout from "../layout/Layout"
+
 export default function  Progress () {
   //* Write logic for the charts component using chartjs package
   return (
-    <div>
-      //* Layout component
+    <>
+    <Layout>
+
       //* Display charts component
 
-      //* Layout component close
-    </div>
+    </Layout>
+    </>
   )
 }
