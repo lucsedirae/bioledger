@@ -4,6 +4,8 @@
   --tertiary-color: #000000;
   --primary-text: #000000;
   --secondary-text: #ffffff;
+  --temp-color: #bad839;
+  --muted: #a5a5a5;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
@@ -23,6 +25,17 @@
   background-color: var(--secondary-color);
   box-shadow: 4px 4px 8px var(--tertiary-color);
   border-radius: 3px;
+  text-align: center;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--secondary-text);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 4rem;
+  box-shadow: 4px 4px 8px var(--muted);
 }
 
 .center {
@@ -36,6 +49,10 @@
   color: var(--secondary-text);
 }
 
+.form-group {
+  padding: 1rem;
+}
+
 .header {
   display: inline-block;
   font-family: 'Passion One', cursive;
@@ -46,7 +63,47 @@
   display: inline-block;
 }
 
-.welcome {
+.input {
+  padding: 0.5rem;
+  width: 15rem;
+  text-align: center;
+  border-radius: 4px;
+  border-width: 1px;
+  box-shadow: 2px 2px 4px var(--muted);
+  
+}
+
+.label {
+  display: block;
+  padding: 0.25rem;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--primary-text);
+}
+
+.logout {
+  display: inline-block;
+  text-align: right;
   color: var(--secondary-text);
+  margin-left: 3rem;
+}
+
+.splash-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  max-width: 400px;
+}
+
+.subheader {
+  padding: 1rem;
+}
+
+.welcome {
+  display: inline-block;
+  color: var(--primary-text);
   padding: 0.5rem;
 }

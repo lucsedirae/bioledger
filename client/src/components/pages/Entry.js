@@ -1,18 +1,23 @@
-//* Custom components
-import Layout from "../layout/Layout"
+//* Dependencies
+import { Link } from 'react-router-dom';
 
-export default function  Entry () {
-//* Check context state to see if today's date has an entry from user
+//* Custom components
+import Complete from '../metrics/Complete';
+import EntryForm from '../metrics/EntryForm';
+import Layout from '../layout/Layout';
+import Welcome from '../layout/Welcome';
+
+export default function Entry() {
+  //* Check context state to see if today's date has an entry from user
+  const todaysEntry = false;
 
   return (
     <>
       <Layout>
-
-      //* Display form component for entering a metric if today's date does not already have an entry
-      //* Else, display completed entry component
-
-      
+        <Welcome />
+        {todaysEntry ? <Complete /> : <EntryForm />}
+        <Link to='/progress'>See your progress</Link>
       </Layout>
     </>
-  )
+  );
 }

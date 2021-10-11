@@ -1,3 +1,6 @@
+//* Dependencies
+import {Link} from 'react-router-dom'
+
 //* React-icons imports
 import { IconContext } from 'react-icons/lib';
 import { TiPlus } from 'react-icons/ti';
@@ -7,10 +10,12 @@ export default function Header() {
       <IconContext.Provider
         value={{ color: 'white', size: '1.45rem', className: 'icon' }}
       >
-        <h1 className=''>
+        <Link to='/' className='link'>
+        <h1 >
           <TiPlus />
           Bioledger
         </h1>
+        </Link>
       </IconContext.Provider>
     </div>
   );
