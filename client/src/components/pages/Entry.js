@@ -8,8 +8,16 @@ import Layout from '../layout/Layout';
 import Welcome from '../layout/Welcome';
 
 export default function Entry() {
-  //* Check context state to see if today's date has an entry from user
+  //* Load global auth and metrics context
+  // if user is not authenticated, redirect to login
+
+  // If user is authenticated check context state to see if today's date has an entry from user
+  //? Placeholder for date cross-check
   const todaysEntry = false;
+
+  // Send new metric to back end
+
+  // Redirect to progress upon successful entry completion
 
   return (
     <>

@@ -6,6 +6,12 @@ import Layout from '../layout/Layout';
 import LoginForm from '../auth/LoginForm';
 
 export default function Login() {
+  //* Import global auth context
+
+  // Send user login info to back end
+
+  // Redirect to entry page upon successful authentication
+  
   return (
     <>
       <Layout>
