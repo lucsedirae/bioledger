@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/authContext';
 
 const RegisterForm = (props) => {
   //* Init auth context
-  const { setIsAuth } = useContext(AuthContext);
+  const { setIsAuth, authUser } = useContext(AuthContext);
 
   //* Init local state
   const [user, setUser] = useState({
@@ -41,10 +41,8 @@ const RegisterForm = (props) => {
         password: '',
         password2: '',
       });
-
       // Set authentication status to true
-      setIsAuth(true);
-
+      authUser();
       // Redirect user to entry page
       props.history.push('/entry');
     } catch (err) {

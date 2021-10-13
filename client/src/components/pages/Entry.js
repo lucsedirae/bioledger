@@ -1,6 +1,7 @@
 //* Dependencies
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { getToken } from '../../utils/getToken';
 
 //* Custom components
 import Complete from '../metrics/Complete';
@@ -11,11 +12,12 @@ import Welcome from '../layout/Welcome';
 //* Import auth context
 import { AuthContext } from '../../context/authContext';
 
-export default function Entry() {
+export default function Entry(props) {
   //* Init auth context
   const { authUser } = useContext(AuthContext);
-  // if user is not authenticated, redirect to login
- 
+
+  // Authenticate user
+  authUser();
 
   // If user is authenticated check context state to see if today's date has an entry from user
 

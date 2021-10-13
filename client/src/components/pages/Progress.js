@@ -1,13 +1,22 @@
+//* Dependencies
+import { useContext } from 'react';
+
 //* Custom components
 import Layout from '../layout/Layout';
 import Welcome from '../layout/Welcome';
-export default function Progress() {
-  //* Import global auth and metric context
 
-  // If user is not authenticated, redirect to login
-  
-  // If user is authenticated, display user metric data to charts 
-  
+//* Import auth context
+import { AuthContext } from '../../context/authContext';
+
+export default function Progress() {
+  //* Init auth context
+  const { authUser } = useContext(AuthContext);
+
+  // Authenticate user
+  authUser();
+
+  // If user is authenticated, display user metric data to charts
+
   return (
     <>
       <Layout>
