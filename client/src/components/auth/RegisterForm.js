@@ -1,10 +1,16 @@
 //* Dependencies
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { withRouter } from 'react-router';
 import axios from 'axios';
 
+//* Import auth context
+import { AuthContext } from '../../context/authContext';
+
 const RegisterForm = (props) => {
-  //* Defines local state
+  //* Init auth context
+  const { setIsAuth } = useContext(AuthContext);
+
+  //* Init local state
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -28,6 +34,19 @@ const RegisterForm = (props) => {
       const res = await axios.post('api/users', user, config);
       // Store token in localstorage
       localStorage.setItem('token', res.data.token);
+      // Clear user local state
+      setUser({
+        name: '',
+        email: '',
+        password: '',
+        password2: '',
+      });
+
+      // Set authentication status to true
+      setIsAuth(true);
+
+      // Redirect user to entry page
+      props.history.push('/entry');
     } catch (err) {
       // Alert the error msg to user if an error is caught
       alert(
