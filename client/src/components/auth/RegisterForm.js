@@ -1,14 +1,25 @@
 //* Dependencies
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { withRouter } from 'react-router';
-import axios from 'axios';
 
 //* Import auth context
-import { AuthContext } from '../../context/authContext';
+import AuthContext from '../../context/authContext';
 
 const RegisterForm = (props) => {
   //* Init auth context
-  const { setIsAuth, authUser } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const { register, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/entry');
+    }
+
+    if (error === 'User already exists') {
+      alert(error);
+      clearErrors();
+    }
+  }, [error, isAuthenticated, props.history]);
 
   //* Init local state
   const [user, setUser] = useState({
@@ -22,35 +33,19 @@ const RegisterForm = (props) => {
   //* Handle Form submission
   const onSubmit = async (e) => {
     e.preventDefault();
-    // Define header configuration for API call
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
 
-    try {
-      // Send local user state to back end and create user in DB.
-      const res = await axios.post('api/users', user, config);
-      // Store token in localstorage
-      localStorage.setItem('token', res.data.token);
-      // Clear user local state
-      setUser({
-        name: '',
-        email: '',
-        password: '',
-        password2: '',
+    if (name === '' || email === '' || password === '') {
+      alert('Please enter all fields');
+    } else if (password !== password2) {
+      alert('Passwords do not match');
+    } else {
+      register({
+        name,
+        email,
+        password,
       });
-      // Set authentication status to true
-      authUser();
-      // Redirect user to entry page
-      props.history.push('/entry');
-    } catch (err) {
-      // Alert the error msg to user if an error is caught
-      alert(
-        `Error: ${err.response.data.msg} status code: ${err.response.status}`
-      );
     }
+    props.history.push('/entry');
   };
 
   //* Handle form input changes

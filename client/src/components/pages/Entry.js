@@ -1,7 +1,6 @@
 //* Dependencies
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getToken } from '../../utils/getToken';
 
 //* Custom components
 import Complete from '../metrics/Complete';
@@ -10,18 +9,26 @@ import Layout from '../layout/Layout';
 import Welcome from '../layout/Welcome';
 
 //* Import auth context
-import { AuthContext } from '../../context/authContext';
+import AuthContext from '../../context/authContext';
+import MetricContext from '../../context/metricContext';
 
 export default function Entry(props) {
-  //* Init auth context
-  const { authUser } = useContext(AuthContext);
-
-  // Authenticate user
-  authUser();
-
-  // If user is authenticated check context state to see if today's date has an entry from user
+  //* Inite auth context
+  const authContext = useContext(AuthContext);
+  const { logout, user, loadUser } = authContext;
 
   //* Init metrics context
+  const metricContext = useContext(MetricContext);
+  const { metrics, getMetrics } = metricContext;
+
+  useEffect(() => {
+    loadUser();
+    getMetrics();
+    // eslint-disable-next-line
+  }, []);
+  console.log(user);
+  console.log(metrics);
+
   //? Placeholder for date cross-check
   const todaysEntry = false;
 
@@ -35,6 +42,11 @@ export default function Entry(props) {
         <Welcome />
         {todaysEntry ? <Complete /> : <EntryForm />}
         <Link to='/progress'>See your progress</Link>
+        <div>
+          <a href='#!' onClick={logout}>
+            Logout
+          </a>
+        </div>
       </Layout>
     </>
   );

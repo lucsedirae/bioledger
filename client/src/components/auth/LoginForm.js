@@ -1,16 +1,25 @@
 //* Dependencies
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { withRouter } from 'react-router';
-import axios from 'axios';
 
-//* Import auth context
-import { AuthContext } from '../../context/authContext';
+//* Import context
+import AuthContext from '../../context/authContext';
 
 const LoginForm = (props) => {
-  //* Init auth context
-  const { setIsAuth, authUser } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const { login, error, clearErrors, isAuthenticated } = authContext;
 
-  //* Initialize local state
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/entry');
+    }
+
+    if (error === 'Invalid Credentials') {
+      alert(error);
+      clearErrors();
+    }
+  }, [error, isAuthenticated, props.history]);
+
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -18,34 +27,16 @@ const LoginForm = (props) => {
   const { email, password } = user;
 
   //* Handle Form submission
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    // Define header configuration for API call
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
 
-    try {
-      // Send local user state to back end and create user in DB.
-      const res = await axios.post('api/auth', user, config);
-      // Store token in localstorage
-      localStorage.setItem('token', res.data.token);
-      // Clear user local state
-      setUser({
-        email: '',
-        password: '',
+    if (email === '' || password === '') {
+      alert('Please fill in all fields');
+    } else {
+      login({
+        email,
+        password,
       });
-      // Set authentication status to true
-      authUser()
-      // Redirect user to entry page
-      props.history.push('/entry');
-    } catch (err) {
-      // Alert the error msg to user if an error is caught
-      alert(
-        `Error: ${err.response.data.msg} status code: ${err.response.status}`
-      );
     }
   };
 

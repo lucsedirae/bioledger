@@ -6,7 +6,7 @@ import Layout from '../layout/Layout';
 import Welcome from '../layout/Welcome';
 
 //* Import auth context
-import { AuthContext } from '../../context/authContext';
+import AuthContext from '../../context/authContext';
 
 export default function Progress() {
   //* Init auth context
