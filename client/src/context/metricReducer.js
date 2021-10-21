@@ -1,5 +1,6 @@
 import { GET_METRICS, ADD_METRIC, METRIC_ERROR } from './types';
 
+// eslint-disable-next-line
 export default (state, action) => {
   switch (action.type) {
     case GET_METRICS:

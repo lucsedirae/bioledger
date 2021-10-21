@@ -1,6 +1,7 @@
 //* Dependencies
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { formatDate } from 'lucsedirae';
 
 //* Custom components
 import Complete from '../metrics/Complete';
@@ -22,15 +23,22 @@ export default function Entry(props) {
   const { metrics, getMetrics } = metricContext;
 
   useEffect(() => {
-    loadUser();
-    getMetrics();
-    // eslint-disable-next-line
+    const loadEntry = () => {
+      try {
+        loadUser();
+        getMetrics();
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    loadEntry();
   }, []);
-  console.log(user);
-  console.log(metrics);
 
-  //? Placeholder for date cross-check
-  const todaysEntry = false;
+  console.log(metrics);
+  console.log(user);
+
+  const today = formatDate(Date.now());
+  const lastEntryDate = metrics ? formatDate(metrics[0].date) : 'Hi';
 
   // Send new metric to back end
 
@@ -40,7 +48,7 @@ export default function Entry(props) {
     <>
       <Layout>
         <Welcome />
-        {todaysEntry ? <Complete /> : <EntryForm />}
+        {today === lastEntryDate ? <Complete /> : <EntryForm />}
         <Link to='/progress'>See your progress</Link>
         <div>
           <a href='#!' onClick={logout}>

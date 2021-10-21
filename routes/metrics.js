@@ -4,6 +4,7 @@
 //* Dependencies
 const express = require('express');
 const auth = require('../middleware/auth');
+const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 //* Import User model and Metrics model
