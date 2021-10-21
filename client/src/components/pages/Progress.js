@@ -15,10 +15,17 @@ export default function Progress() {
   const { getMetrics, metrics } = useContext(MetricContext);
 
   useEffect(() => {
-    loadUser();
-    getMetrics();
-    console.log(metrics)
-  }, [getMetrics, metrics, loadUser]);
+    const loadEntry = () => {
+      try {
+        loadUser();
+        getMetrics();
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    loadEntry();
+  }, []);
+  console.log(metrics);
   // Authenticate user
 
   // If user is authenticated, display user metric data to charts

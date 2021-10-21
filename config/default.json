@@ -1,4 +1,4 @@
 {
   "mongoURI": "mongodb+srv://admin:VglbGJXXdViP5TTg@cluster0.igky9.mongodb.net/bioledger?retryWrites=true&w=majority",
-  "jwtSecret": "secret"
+  "jwtSecret": "45f896dfsdfsdfsdf123dqkuy33"
 }

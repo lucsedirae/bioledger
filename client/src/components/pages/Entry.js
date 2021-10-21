@@ -16,7 +16,7 @@ import MetricContext from '../../context/metricContext';
 export default function Entry(props) {
   //* Inite auth context
   const authContext = useContext(AuthContext);
-  const { logout, user, loadUser } = authContext;
+  const { logout, loadUser } = authContext;
 
   //* Init metrics context
   const metricContext = useContext(MetricContext);
@@ -34,15 +34,8 @@ export default function Entry(props) {
     loadEntry();
   }, []);
 
-  console.log(metrics);
-  console.log(user);
-
   const today = formatDate(Date.now());
   const lastEntryDate = metrics ? formatDate(metrics[0].date) : 'Hi';
-
-  // Send new metric to back end
-
-  // Redirect to progress upon successful entry completion
 
   return (
     <>
