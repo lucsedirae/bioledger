@@ -2,6 +2,7 @@
 import { useContext, useEffect } from 'react';
 
 //* Custom components
+import { Charts } from '../metrics/Charts';
 import Layout from '../layout/Layout';
 import Welcome from '../layout/Welcome';
 
@@ -25,7 +26,6 @@ export default function Progress() {
     };
     loadEntry();
   }, []);
-  console.log(metrics);
   // Authenticate user
 
   // If user is authenticated, display user metric data to charts
@@ -34,6 +34,7 @@ export default function Progress() {
     <>
       <Layout>
         <Welcome />
+        <Charts />
       </Layout>
     </>
   );

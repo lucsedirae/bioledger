@@ -9,7 +9,7 @@ import EntryForm from '../metrics/EntryForm';
 import Layout from '../layout/Layout';
 import Welcome from '../layout/Welcome';
 
-//* Import auth context
+//* Import context
 import AuthContext from '../../context/authContext';
 import MetricContext from '../../context/metricContext';
 
